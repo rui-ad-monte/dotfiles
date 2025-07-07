@@ -1,0 +1,4 @@
+if [ -f "$HOME/.shell_profile_shared" ]; then
+  . "$HOME/.shell_profile_shared"
+fi
+

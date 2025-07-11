@@ -68,6 +68,7 @@ To make the nvim working we need more things
 brew install ripgrep
 brew install fzf
 brew install lazygit
+brew install fd
 ```
 
 

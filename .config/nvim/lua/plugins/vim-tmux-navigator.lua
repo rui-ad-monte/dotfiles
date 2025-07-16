@@ -1,10 +1,26 @@
- return {
-     "christoomey/vim-tmux-navigator",
-    keys = {
-        { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Go to the previous pane" },
-        { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Got to the left pane" },
-        { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Got to the down pane" },
-        { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Got to the up pane" },
-        { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Got to the right pane" },
+return {
+  "alexghergh/nvim-tmux-navigation",
+  keys = {
+    {
+      "<C-h>",
+      "<Cmd>NvimTmuxNavigateLeft<cr>",
+      desc = "Navigate left",
     },
+    {
+      "<C-j>",
+      "<Cmd>NvimTmuxNavigateDown<cr>",
+      desc = "Navigate down",
+    },
+    {
+      "<C-k>",
+      "<Cmd>NvimTmuxNavigateUp<cr>",
+      desc = "Navigate up",
+    },
+    {
+      "<C-l>",
+      "<Cmd>NvimTmuxNavigateRight<cr>",
+      desc = "Navigate right",
+    },
+  },
+  config = true,
 }

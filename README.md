@@ -66,17 +66,20 @@ brew install fd
 
 ## Install nvm
 
-Better to follow the official GitHub [here](https://github.com/nvm-sh/nvm#installing-and-updating)
-
 ```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+brew install nvm
 ```
 
-If want to use prettier in nvim install prettier global in the system
+Install prettier global
 
 ```shell
-npm install -g prettier
+brew install prettier
+```
 
+Install opencode agent
+
+```shell
+brew install anomalyco/tap/opencode
 ```
 
 ## Overwrite Apple git version

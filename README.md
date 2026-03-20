@@ -1,97 +1,52 @@
-# How to make dotfiles working
+# Dotfiles
 
-## Install Home brew
+This repo is organized as GNU Stow packages so a fresh clone can bootstrap itself.
 
-_Better to follow the official site <https://brew.sh>_
+## Quick start
 
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```sh
+git clone <your-repo-url> ~/dotfiles
+cd ~/dotfiles
+./scripts/bootstrap.sh
 ```
 
-## Install Stow
+The bootstrap script will:
 
-```shell
-brew install stow
+- install Homebrew if it is missing
+- install shared packages from `Brewfile.common`
+- install platform packages from `Brewfile.darwin` or `Brewfile.linux`
+- stow the dotfiles into `$HOME`
+- install TPM for tmux plugins
+- create `~/.config/zsh/local.zsh` from the example file if it does not exist yet
+
+## Layout
+
+- `shell/` manages `~/.zshenv`
+- `tmux/` manages `~/.tmux.conf`
+- `xdg/` manages shared `~/.config/*` files like zsh, nvim, ghostty, starship, and opencode
+- `macos/` manages macOS-only config like Karabiner
+
+## Shell config and secrets
+
+Tracked zsh config lives in `xdg/.config/zsh/`.
+
+- `shell/.zshenv` points zsh to `~/.config/zsh`
+- `xdg/.config/zsh/.zshrc` loads modular files from `xdg/.config/zsh/rc.d/`
+- `~/.config/zsh/local.zsh` is for machine-local env vars, secrets, and overrides
+
+Keep secrets out of git by editing `~/.config/zsh/local.zsh`, not the tracked files.
+
+## Manual restow
+
+If you change the repo layout later, run:
+
+```sh
+./scripts/stow.sh
 ```
 
-## Install Zoxide
+## Notes
 
-```shell
-brew install zoxide
-```
-
-## Install Aerospace
-
-```shell
-brew install --cask nikitabobko/tap/aerospace
-```
-
-## dotfiles
-
-Clone the repo to home (~).
-Inside the dotfiles use the command
-
-```shell
-stow --adopt .
-```
-
-## Terminal
-
-Ghostty
-
-# Other configs
-
-## Install Starship
-
-_Requirement_ Nerd font "MesloLG Nerd Font" [here](https://www.nerdfonts.com/)
-
-```shell
-brew install starship
-```
-
-# Install NeoVim
-
-```shell
-brew install nvim
-```
-
-To make the nvim working we need more things
-
-```shell
-brew install ripgrep
-brew install fzf
-brew install lazygit
-brew install fd
-```
-
-## Install nvm
-
-```shell
-brew install nvm
-```
-
-Install prettier global
-
-```shell
-brew install prettier
-```
-
-Install opencode agent
-
-```shell
-brew install anomalyco/tap/opencode
-```
-
-## Overwrite Apple git version
-
-If using `git -v` show `git version x.x.x (Apple Git-xxx.x)`
-
-```shell
-brew install git
-```
-
-Overwrite git command
-
-```shell
-brew link --overwrite git
-```
+- `opencode.json` stays tracked in git; only local runtime files under `xdg/.config/opencode/` are ignored
+- `Brewfile.darwin` installs GUI apps like Ghostty, Karabiner-Elements, and Rectangle
+- Ghostty uses `MesloLGS Nerd Font Mono`; install it manually if you want the exact same font locally
+- Neovim plugins bootstrap themselves on first launch through LazyVim

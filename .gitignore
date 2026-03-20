@@ -1,2 +1,9 @@
 .DS_Store
-
+**/.DS_Store
+/.config/
+xdg/.config/opencode/.gitignore
+xdg/.config/opencode/bun.lock
+xdg/.config/opencode/node_modules/
+xdg/.config/opencode/package.json
+xdg/.config/zsh/local.zsh
+macos/.config/karabiner/automatic_backups/

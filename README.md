@@ -32,9 +32,10 @@ Tracked zsh config lives in `xdg/.config/zsh/`.
 
 - `shell/.zshenv` points zsh to `~/.config/zsh`
 - `xdg/.config/zsh/.zshrc` loads modular files from `xdg/.config/zsh/rc.d/`
+- `xdg/.config/zsh/.zshrc` also sources local `~/.zshrc` at the end for CLI installers that append there
 - `~/.config/zsh/local.zsh` is for machine-local env vars, secrets, and overrides
 
-Keep secrets out of git by editing `~/.config/zsh/local.zsh`, not the tracked files.
+Keep secrets out of git by editing `~/.config/zsh/local.zsh`, not the tracked files. If a CLI installer appends to `~/.zshrc`, those lines will still run after the tracked config loads.
 
 ## Manual restow
 

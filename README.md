@@ -5,10 +5,11 @@ This repo is organized as GNU Stow packages so a fresh clone can bootstrap itsel
 ## Quick start
 
 ```sh
-git clone <your-repo-url> ~/dotfiles
-cd ~/dotfiles
-./scripts/bootstrap.sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rui-ad-monte/dotfiles/main/scripts/install.sh)"
 ```
+
+The installer clones this repo into `~/dotfiles` and runs `scripts/bootstrap.sh`.
+It stops with an error if `~/dotfiles` already exists and is not empty.
 
 The bootstrap script will:
 

@@ -1,11 +1,11 @@
 tap "anomalyco/tap"
 
 brew "fd"
+brew "fnm"
 brew "fzf"
 brew "git"
 brew "lazygit"
 brew "neovim"
-brew "nvm"
 brew "opencode"
 brew "prettier"
 brew "ripgrep"

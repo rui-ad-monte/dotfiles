@@ -48,5 +48,7 @@ If you change the repo layout later, run:
 
 - `opencode.json` stays tracked in git; only local runtime files under `xdg/.config/opencode/` are ignored
 - `Brewfile.darwin` installs GUI apps like Ghostty, Karabiner-Elements, and Rectangle
+- Node version management uses `fnm`; the shell keeps an `nvm` compatibility function that forwards common commands to `fnm`
+- `scripts/bootstrap.sh` migrates `~/.nvm/alias/default` into `fnm` when that file exists
 - Ghostty uses `MesloLGS Nerd Font Mono`; install it manually if you want the exact same font locally
 - Neovim plugins bootstrap themselves on first launch through LazyVim

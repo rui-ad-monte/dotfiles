@@ -87,6 +87,35 @@ install_tmux_plugin_manager() {
   git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
 }
 
+migrate_nvm_default_to_fnm() {
+  local nvm_default_alias
+
+  if ! command -v fnm >/dev/null 2>&1; then
+    return
+  fi
+
+  if fnm default >/dev/null 2>&1; then
+    return
+  fi
+
+  nvm_default_alias="$HOME/.nvm/alias/default"
+
+  if [[ ! -r "$nvm_default_alias" ]]; then
+    return
+  fi
+
+  local default_version
+  default_version="$(tr -d '[:space:]' < "$nvm_default_alias")"
+
+  if [[ -z "$default_version" ]]; then
+    return
+  fi
+
+  log "Migrating default Node version from nvm to fnm"
+  fnm install "$default_version"
+  fnm default "$default_version"
+}
+
 prepare_local_shell_config() {
   local local_shell_file
 
@@ -105,6 +134,7 @@ main() {
   install_homebrew
   activate_homebrew
   install_brew_bundles
+  migrate_nvm_default_to_fnm
   "$REPO_ROOT/scripts/stow.sh"
   install_tmux_plugin_manager
   prepare_local_shell_config

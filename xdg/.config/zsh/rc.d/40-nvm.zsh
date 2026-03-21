@@ -1,12 +1,22 @@
 export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
 
+unset NVM_BIN
+unset NVM_INC
+unset NVM_CD_FLAGS
+
+path=("${(@)path:#$NVM_DIR/versions/*/bin}")
+
+if (( ${+manpath} )); then
+  manpath=("${(@)manpath:#$NVM_DIR/versions/*/share/man}")
+fi
+
 for nvm_sh in \
   "$NVM_DIR/nvm.sh" \
   "/opt/homebrew/opt/nvm/nvm.sh" \
   "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
 do
   if [[ -s "$nvm_sh" ]]; then
-    . "$nvm_sh"
+    . "$nvm_sh" --no-use
     break
   fi
 done

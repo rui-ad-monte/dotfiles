@@ -1,103 +1,55 @@
-# How to make dotfiles working
+# Dotfiles
 
-## Install Home brew
-_Better to follow the official site https://brew.sh_
+This repo is organized as GNU Stow packages so a fresh clone can bootstrap itself.
 
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+## Quick start
 
-
-## Install Stow
-
-```
-brew install stow
+```sh
+git clone <your-repo-url> ~/dotfiles
+cd ~/dotfiles
+./scripts/bootstrap.sh
 ```
 
-## Install Zoxide
+The bootstrap script will:
 
-```
-brew install zoxide
-```
+- install Homebrew if it is missing
+- install shared packages from `Brewfile.common`
+- install platform packages from `Brewfile.darwin` or `Brewfile.linux`
+- stow the dotfiles into `$HOME`
+- install TPM for tmux plugins
+- create `~/.config/zsh/local.zsh` from the example file if it does not exist yet
 
+## Layout
 
-## Install Aerospace
+- `shell/` manages `~/.zshenv`
+- `tmux/` manages `~/.tmux.conf`
+- `xdg/` manages shared `~/.config/*` files like zsh, nvim, ghostty, starship, and opencode
+- `macos/` manages macOS-only config like Karabiner
 
-```
-brew install --cask nikitabobko/tap/aerospace
-```
+## Shell config and secrets
 
+Tracked zsh config lives in `xdg/.config/zsh/`.
 
-## dotfiles
-Clone the repo to home (~).
-Inside the dotfiles use the command
+- `shell/.zshenv` points zsh to `~/.config/zsh`
+- `xdg/.config/zsh/.zshrc` loads modular files from `xdg/.config/zsh/rc.d/`
+- `xdg/.config/zsh/.zshrc` also sources local `~/.zshrc` at the end for CLI installers that append there
+- `~/.config/zsh/local.zsh` is for machine-local env vars, secrets, and overrides
 
-```
-stow --adopt .
-```
+Keep secrets out of git by editing `~/.config/zsh/local.zsh`, not the tracked files. If a CLI installer appends to `~/.zshrc`, those lines will still run after the tracked config loads.
 
-## Terminal
-This config is configure for [Kitty](https://sw.kovidgoyal.net/kitty)
-```
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-```
+## Manual restow
 
-Before Kitty: [Allacritty](https://github.com/alacritty/alacritty)
+If you change the repo layout later, run:
 
-
-
-# Other configs
-
-## Install Starship
-*Requirement* Nerd font "MesloLG Nerd Font" [here](https://www.nerdfonts.com/)
-
-```
-brew install starship
+```sh
+./scripts/stow.sh
 ```
 
+## Notes
 
-# Install Neo Vim
-
-```
-brew install nvim
-```
-
-To make the nvim working we need more things
-
-```
-brew install ripgrep
-brew install fzf
-brew install lazygit
-```
-
-
-## Install nvm
-Better to follow the oficial GitHub [here](https://github.com/nvm-sh/nvm#installing-and-updating)
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-```
-
-If want to use prettier in nvim install prettier global in the system
-```
-npm install -g prettier
-```
-
-
-## Install Zellij
-```
-brew install zellij
-```
-
-
-## Overwrite Apple git version
-If using `git -v` show `git version x.x.x (Apple Git-xxx.x)`
-
-```
-brew install git
-```
-
-Overwrite git command
-```
-brew link --overwrite git
-```
-
+- `opencode.json` stays tracked in git; only local runtime files under `xdg/.config/opencode/` are ignored
+- `Brewfile.darwin` installs GUI apps like Ghostty, Karabiner-Elements, and Rectangle
+- Node version management uses `fnm`; the shell keeps an `nvm` compatibility function that forwards common commands to `fnm`
+- `scripts/bootstrap.sh` migrates `~/.nvm/alias/default` into `fnm` when that file exists
+- Ghostty uses `MesloLGS Nerd Font Mono`; install it manually if you want the exact same font locally
+- Neovim plugins bootstrap themselves on first launch through LazyVim

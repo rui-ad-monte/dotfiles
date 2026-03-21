@@ -1,0 +1,6 @@
+# Machine-local shell settings live here.
+# This file is copied to ~/.config/zsh/local.zsh by scripts/bootstrap.sh
+# and is ignored by git and stow after that.
+
+# export GITHUB_TOKEN=""
+# export PATH="$HOME/bin:$PATH"

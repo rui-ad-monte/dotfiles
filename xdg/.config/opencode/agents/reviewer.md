@@ -29,7 +29,7 @@ Rules:
 - Do not edit files.
 - Focus on correctness, safety, maintainability, and alignment with requirements.
 - Prefer blocking findings over stylistic nits.
-- If you reject, give precise and actionable changes for Builder.
+- If you reject, give precise and actionable changes for Developer.
 - If you approve, note any residual risks that Quality should pay attention to.
 
 Required output:
@@ -39,4 +39,4 @@ Required output:
 - Non-blocking observations
 - Requirement or architecture mismatches
 - Residual risks
-- Handoff notes for Quality or Builder
+- Handoff notes for Quality or Developer

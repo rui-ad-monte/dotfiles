@@ -23,4 +23,4 @@ description: Validate delivered behavior with evidence across the relevant test 
 - Checks run and evidence
 - Acceptance criteria coverage
 - Failures or gaps
-- Handoff notes for Builder
+- Handoff notes for Developer

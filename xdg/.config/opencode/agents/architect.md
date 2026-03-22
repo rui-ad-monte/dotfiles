@@ -44,4 +44,4 @@ Required output:
 - Rollout and observability plan
 - Risks and edge cases
 - Validation strategy
-- Handoff notes for Builder
+- Handoff notes for Developer

@@ -13,7 +13,7 @@ description: Turn a product brief into a grounded implementation plan across rep
 - Rollout and observability plan
 - Risks and edge cases
 - Validation strategy
-- Handoff notes for Builder
+- Handoff notes for Developer
 
 ## How to work
 
@@ -24,6 +24,6 @@ description: Turn a product brief into a grounded implementation plan across rep
 
 ## Quality bar
 
-- The plan should tell Builder where to work and why.
+- The plan should tell Developer where to work and why.
 - Risks should map to concrete validation.
 - Unknowns should be explicit when they could change scope or implementation.

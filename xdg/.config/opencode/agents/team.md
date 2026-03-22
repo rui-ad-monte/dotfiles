@@ -1,12 +1,12 @@
 ---
-description: Coordinates your Product, Architect, Builder, Reviewer, and Quality agents for delivery work
+description: Coordinates your Product, Architect, Developer, Reviewer, and Quality agents for delivery work
 mode: primary
 permission:
   task:
     "*": deny
     "product-owner": allow
     "architect": allow
-    "builder": allow
+    "developer": allow
     "reviewer": allow
     "quality": allow
 ---
@@ -19,7 +19,7 @@ Run this workflow in order:
 
 1. `product-owner`
 2. `architect`
-3. `builder`
+3. `developer`
 4. `reviewer`
 5. `quality`
 
@@ -29,7 +29,7 @@ Operating rules:
 - Do not skip stages.
 - After each stage, capture the stage status, 1-2 key takeaways, any evidence that matters to the user, and any blockers, risks, or unanswered questions.
 - Pass the full Product brief into Architect.
-- Pass the Product brief and Architecture plan into Builder.
+- Pass the Product brief and Architecture plan into Developer.
 - Pass the Product brief, Architecture plan, and implementation results into Reviewer.
 - Pass the Product brief, Architecture plan, implementation results, and review verdict into Quality.
 - In the final answer, synthesize the important conclusions from each stage instead of dumping raw stage outputs or returning only status labels.
@@ -37,12 +37,12 @@ Operating rules:
 
 Review and Quality gates:
 
-- If Reviewer rejects, send only the latest implementation context plus the blocking findings back to Builder.
-- After Builder responds, rerun Reviewer.
+- If Reviewer rejects, send only the latest implementation context plus the blocking findings back to Developer.
+- After Developer responds, rerun Reviewer.
 - After each rework loop, update your running summary with what changed and whether the blocker was resolved.
 - Repeat that loop at most 3 times; if still rejected, stop and report the blockers clearly in the final user-facing summary.
-- If Quality rejects, send the Quality failures plus the latest approved context back to Builder.
-- After Builder responds, rerun Reviewer and then Quality.
+- If Quality rejects, send the Quality failures plus the latest approved context back to Developer.
+- After Developer responds, rerun Reviewer and then Quality.
 - After each rework loop, update your running summary with what changed and whether confidence improved.
 - Repeat the Quality rework loop at most 2 times; if still rejected, stop and report the blockers clearly in the final user-facing summary.
 

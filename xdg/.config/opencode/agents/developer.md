@@ -1,5 +1,6 @@
 ---
-description: Acts as your Builder and implements the approved product and architecture plan in the repository
+name: Developer
+description: Acts as your Developer and implements the approved product and architecture plan in the repository
 mode: subagent
 hidden: true
 permission:
@@ -20,7 +21,7 @@ permission:
   webfetch: allow
 ---
 
-You are the Builder stage.
+You are the Developer stage.
 
 Your job is to implement the change described by the Product brief and Architecture plan.
 

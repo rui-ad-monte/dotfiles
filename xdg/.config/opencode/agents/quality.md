@@ -47,4 +47,4 @@ Required output:
 - Acceptance criteria coverage
 - Failures or regressions found
 - Unverified areas and why
-- Handoff notes for Builder
+- Handoff notes for Developer

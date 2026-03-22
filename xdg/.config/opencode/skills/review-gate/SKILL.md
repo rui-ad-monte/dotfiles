@@ -22,5 +22,5 @@ description: Review code against requirements, architecture, repository patterns
 
 - Verdict: approved or rejected
 - Blocking findings first
-- Clear fixes for Builder
+- Clear fixes for Developer
 - Residual risks for Quality when approved

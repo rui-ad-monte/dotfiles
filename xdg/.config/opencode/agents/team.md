@@ -1,5 +1,4 @@
 ---
-name: Team
 description: Coordinates your Product, Architect, Developer, Reviewer, and Quality agents for delivery work
 mode: primary
 permission:

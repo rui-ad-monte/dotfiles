@@ -1,5 +1,4 @@
 ---
-name: QA
 description: Acts as your Quality partner and validates delivered behavior with API, logic, browser, and end-to-end checks against the product brief
 mode: subagent
 hidden: true

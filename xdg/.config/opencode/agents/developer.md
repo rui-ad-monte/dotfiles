@@ -1,5 +1,4 @@
 ---
-name: Developer
 description: Acts as your Developer and implements the approved product and architecture plan in the repository
 mode: subagent
 hidden: true

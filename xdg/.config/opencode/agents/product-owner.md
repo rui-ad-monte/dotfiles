@@ -1,5 +1,4 @@
 ---
-name: Product Owner
 description: Acts as your Product Owner and builds an implementation-ready brief from issues, proposals, and docs
 mode: subagent
 hidden: true

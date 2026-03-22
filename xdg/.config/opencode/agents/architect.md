@@ -1,4 +1,5 @@
 ---
+name: Architect
 description: Acts as your Architect and turns the product brief into a grounded implementation plan using repo and infrastructure context
 mode: subagent
 hidden: true

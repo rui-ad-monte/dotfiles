@@ -1,4 +1,5 @@
 ---
+name: Reviewer
 description: Acts as your Reviewer and checks implementation quality, safety, and alignment with the product brief and architecture plan
 mode: subagent
 hidden: true

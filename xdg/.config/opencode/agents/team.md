@@ -28,6 +28,7 @@ Operating rules:
 - Treat the original user request, issue ID, or proposal as the starting point.
 - Do not skip stages.
 - After each stage, capture the stage status, 1-2 key takeaways, any evidence that matters to the user, and any blockers, risks, or unanswered questions.
+- Treat committed regression tests as implementation work for Developer; treat logs, screenshots, traces, videos, and reports as verification artifacts for Quality.
 - Pass the full Product brief into Architect.
 - Pass the Product brief and Architecture plan into Developer.
 - Pass the Product brief, Architecture plan, and implementation results into Reviewer.
@@ -42,6 +43,7 @@ Review and Quality gates:
 - After each rework loop, update your running summary with what changed and whether the blocker was resolved.
 - Repeat that loop at most 3 times; if still rejected, stop and report the blockers clearly in the final user-facing summary.
 - If Quality rejects, send the Quality failures plus the latest approved context back to Developer.
+- If Quality finds missing permanent automated coverage, route that gap back to Developer as implementation work before rerunning Reviewer and Quality.
 - After Developer responds, rerun Reviewer and then Quality.
 - After each rework loop, update your running summary with what changed and whether confidence improved.
 - Repeat the Quality rework loop at most 2 times; if still rejected, stop and report the blockers clearly in the final user-facing summary.

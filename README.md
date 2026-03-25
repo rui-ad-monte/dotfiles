@@ -46,6 +46,14 @@ If you change the repo layout later, run:
 ./scripts/stow.sh
 ```
 
+If you intentionally changed a managed file in `$HOME` and want to bring that version back into the repo before re-stowing, use:
+
+```sh
+./scripts/stow.sh --adopt
+```
+
+`--adopt` makes the existing managed file under `$HOME` become the repo version, so review the resulting `git diff` before committing.
+
 ## Notes
 
 - `opencode.json` stays tracked in git; only local runtime files under `xdg/.config/opencode/` are ignored

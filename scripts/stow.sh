@@ -8,6 +8,15 @@ log() {
   printf '==> %s\n' "$*"
 }
 
+usage() {
+  printf '%s\n' \
+    "Usage: ./scripts/stow.sh [--adopt]" \
+    "" \
+    "Options:" \
+    "  --adopt  Import existing managed files from \$HOME into the repo before stowing" \
+    "  -h, --help  Show this help message"
+}
+
 detect_brew_bin() {
   if [[ -x "/opt/homebrew/bin/brew" ]]; then
     printf '/opt/homebrew/bin/brew\n'
@@ -100,7 +109,29 @@ package_names() {
 }
 
 main() {
+  local adopt_mode=0
   local packages=()
+  local stow_args=(--no-folding --restow)
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --adopt)
+        adopt_mode=1
+        stow_args+=(--adopt)
+        ;;
+      -h|--help)
+        usage
+        return 0
+        ;;
+      *)
+        printf 'Unknown argument: %s\n\n' "$1" >&2
+        usage >&2
+        return 1
+        ;;
+    esac
+
+    shift
+  done
 
   activate_homebrew_if_available
 
@@ -115,9 +146,14 @@ main() {
     packages+=("$package_name")
   done < <(package_names)
 
-  log "Stowing packages: ${packages[*]}"
+  if [[ "$adopt_mode" -eq 1 ]]; then
+    log "Stowing packages with --adopt: ${packages[*]}"
+  else
+    log "Stowing packages: ${packages[*]}"
+  fi
+
   mkdir -p "$HOME/.config" "$HOME/.config/zsh"
-  stow --dir="$REPO_ROOT" --target="$HOME" --no-folding --restow "${packages[@]}"
+  stow --dir="$REPO_ROOT" --target="$HOME" "${stow_args[@]}" "${packages[@]}"
 }
 
 main "$@"

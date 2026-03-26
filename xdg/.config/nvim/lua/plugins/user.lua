@@ -4,4 +4,15 @@ return {
 
   -- Disable scroll animation plugin (example: 'petertriho/nvim-scrollbar')
   { "petertriho/nvim-scrollbar", enabled = false },
+
+  {
+    "folke/flash.nvim",
+    opts = {
+      modes = {
+        treesitter = {
+          labels = "",
+        },
+      },
+    },
+  },
 }

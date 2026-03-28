@@ -1,6 +1,7 @@
 ---
 description: Coordinates your Product, Architect, Developer, Reviewer, and Quality agents for delivery work
 mode: primary
+color: "#2563eb"
 permission:
   task:
     "*": deny

@@ -1,0 +1,30 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+{
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+  },
+  "buffer_font_size": 15,
+  "command_aliases": {
+    "Q": "q",
+    "W": "w",
+    "Wq": "wq",
+  },
+  "icon_theme": "Catppuccin Mocha",
+  "relative_line_numbers": "enabled",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha",
+  },
+  "ui_font_size": 16,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "use_smartcase_find": true,
+  },
+  "vim_mode": true,
+}

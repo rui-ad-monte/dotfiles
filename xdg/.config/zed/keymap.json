@@ -64,8 +64,9 @@
 
       "space c a": "editor::ToggleCodeActions",
       "space c shift-a": "editor::ToggleCodeActions",
-      "space c c": "editor::ToggleCodeLens",
-      "space c shift-c": "editor::ToggleCodeLens",
+      // Zed stable v1.0.1 does not include this action yet.
+      // "space c c": "editor::ToggleCodeLens",
+      // "space c shift-c": "editor::ToggleCodeLens",
       "space c d": "editor::Hover",
       "space c f": "editor::Format",
       "space c l": "lsp_tool::ToggleMenu",
